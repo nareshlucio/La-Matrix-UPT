@@ -13,9 +13,10 @@
 	$pregunta3 =$_POST["pregun3"];
 	$pregunta4 =$_POST["pregun4"];
 	$promedio =$_POST["promedio"];
+	$TiempoFecha = date('Y-m-d', time());
 	//----------------------------------------------------------------------
 	//----------------Consulta para el registro de la tutoria---------------
-	$sql = "INSERT INTO encuesta_satisfaccion(Nombre_Tutor, Nombre_Maestro, Pregunta_1, Pregunta_2, Pregunta_3, Pregunta_4, Nombre_Alumno, Promedio) VALUES ('".$Tutor."', '".$Profesor."', ".$pregunta1.", ".$pregunta2.", ".$pregunta3.", ".$pregunta4.", '".$Alumno."', ".$promedio.")";
+	$sql = "INSERT INTO encuesta_satisfaccion(Nombre_Tutor, Nombre_Maestro, Pregunta_1, Pregunta_2, Pregunta_3, Pregunta_4, Nombre_Alumno, Promedio, Fecha) VALUES ('".$Tutor."', '".$Profesor."', ".$pregunta1.", ".$pregunta2.", ".$pregunta3.", ".$pregunta4.", '".$Alumno."', ".$promedio.",'".$TiempoFecha."')";
 	//---------------------------Fin del Registro--------------------------
 ?>
 <!DOCTYPE html>

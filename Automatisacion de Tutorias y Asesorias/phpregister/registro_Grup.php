@@ -4,10 +4,11 @@
 	$consul = "SELECT * FROM tutores;";
 	$result1 = mysqli_query($con, $consul);
 	$nom_tut = $_POST["Tut_nom"];
-	$mot = $_POST["frm_moti"];
+	$mot = $_POST["motivosti"];
 	$grupo = $_POST["frm_grop"];
 	$descr = $_POST["frm_area"];
-	$sql = "INSERT INTO tutoria_grupal (Nombre_Tutor, Motivo_Grupo, Grupo, Descripcion) VALUES ('".$nom_tut."', '".$mot."', '".$grupo."', '".$descr."')";
+	$TiempoFecha = date('Y-m-d', time());
+	$sql = "INSERT INTO tutoria_grupal (Nombre_Tutor, Motivo_Grupo, Grupo, Descripcion, Fecha) VALUES ('".$nom_tut."', '".$mot."', '".$grupo."', '".$descr."', '".$TiempoFecha."')";
 ?>
 <!DOCTYPE html>
 <html>

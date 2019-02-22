@@ -2,14 +2,17 @@
 	$Con = db_connect();
 	$sql1 = "SELECT * FROM tutores;";
 	$sql2 = "SELECT * FROM alumnos";
+	$Consul3 = "SELECT * FROM motivosa";
 	$result1 = mysqli_query($Con, $sql1);
 	$result2 = mysqli_query($Con, $sql2);
+	$result3 = mysqli_query($Con, $Consul3);
+
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<!--Aparado de CSS-->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<!--Cierre de CSS-->
 	<title>Generador de Asesorias</title>
 	<meta charset="utf-8">
@@ -20,8 +23,7 @@
 		<div class="col">
 			<img src="imgs/logo-uni.png" width="100px" height="100px">
 		</div>
-		<div class="col">
-			<br>
+		<div class="col d-flex align-items-center">
 			<h1>Asesorias</h1>
 		</div>
 	</div>
@@ -33,7 +35,9 @@
 		<a class="nav-link" href="Encuestas_Sat.php">Encuestas de Satisfacion</a>
 		<a class="nav-link disabled" href="Asesorias.php">Asesorias</a>
 		<a class="nav-link disabled" href="#">Total</a>
-		<a class="nav-link" href="Registro_Tut.php">Registro Tutores/Profesores/Alumnos</a>
+		<a class="nav-link" href="Registro_Tut.php">Tutores</a>
+		<a class="nav-link" href="Registro_Alum.php">Alumnos</a>
+		<a class="nav-link" href="Registro_Prof.php">Profesores</a>
 	</nav>
 	<br>
 <div class="container">
@@ -78,8 +82,20 @@
 				<br>
 				<div class="form-row">
 					<div class="col-md">
-						<label class="form-col-label">Motivo</label>
-						<input type="text" class="form-control" name="Motivo" placeholder="Motivo de la Asesoria">
+						<label class="form-col-label">Motivo de la Asesoria</label>
+						<select class="form-control custom-select" name="motivosti">
+    					<option selected name="defaul">Seleccione un motivo</option>
+					<?php
+    					if($row = mysqli_fetch_array($result3)){
+								do {
+									echo "<option value='".$row["motivo"]."'>".$row["motivo"]."</option>"; 
+								} while ($row = mysqli_fetch_array($result3));
+							}
+							else{
+								echo "<option value = '1'> no hay registros</option>";
+							}
+					?>
+					</select>
 					</div>
 				</div>
 				<br>
@@ -98,7 +114,7 @@
 				</div>
 				<br>
 				<div class="form-row">
-					<div class="col-md-6">
+					<div class="col">
 						<label class="form-col-label">Grupo</label>
 						<input type="text" class="form-control" name="Grupo" placeholder="Grupo">
 					</div>
@@ -120,7 +136,7 @@
 				<br>
 				<div class="form-row">
 					<div class="col-md-auto">
-						<input type="submit" name="Submit" value="Enviar" class="btn-dark">
+						<input type="submit" name="Submit" value="Enviar" class=" btn btn-dark">
 					</div>
 					<div class="col-md-auto">
 						<input type="reset" value="Limpiar" class="btn btn-dark">
@@ -129,6 +145,22 @@
 				<br>
 			</div>
 		</form>
+		<div class="col"></div>
+		<div class="col-md-auto float-right align-items-right">
+			<h4>Tipos de Motivos de Asesorias</h4>
+			<ol>
+				<li>1A [Desempeño] (Materias Reprobadas Indicar cuántas y cuáles)</li>
+				<li>1B [Desempeño] (Evaluacion de Competencias)</li>
+				<li>1C [Desempeño] (Bajo o Nulo Desempeño Académico)</li>
+				<li>1D [Desempeño] (Baja Calidad en Trabajos Académicos)</li>
+				<li>1E [Desempeño] (Nula Entrega de Trabajos Académicos)</li>
+				<li>1F [Desempeño] (Aclaracion de Dudas)</li>
+				<li>1G [Desempeño] (Para Presentar Evaluación por Recuperación)</li>
+				<li>1H [Desempeño] (Asesoría Estancia/Estadía)</li>
+				<li>2  [Temática]   (Diferentes temas Especificar en Observaciones)</li>
+				<li>3  [Otros]      (Especificar)</li>
+			</ol>
+		</div>
 	</div>
 </div>
 <div class="container-fluid" style="background-color: gray;">

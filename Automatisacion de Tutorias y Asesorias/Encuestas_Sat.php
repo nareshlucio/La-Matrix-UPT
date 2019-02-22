@@ -37,8 +37,10 @@
 		<a class="nav-link disabled" href="Encuestas_Sat.php">Encuestas de Satisfacion</a>
 		<a class="nav-link" href="Asesorias.php">Asesorias</a>
 		<a class="nav-link disabled" href="#">Total</a>
-		<a class="nav-link" href="Registro_Tut.php">Registro Tutores/Profesores/Alumnos</a>
-	</nav>>
+		<a class="nav-link" href="Registro_Tut.php">Tutores</a>
+		<a class="nav-link" href="Registro_Alum.php">Alumnos</a>
+		<a class="nav-link" href="Registro_Prof.php">Profesores</a>
+	</nav>
 	<br>
 <div class="container">
 	<div class="row">

@@ -8,9 +8,10 @@
 	$nom_prof = $_POST["Prof"];
 	$nom_alum = $_POST["Alum"];
 	$gen;
-	$mot = $_POST["Mot_Aseso"];
+	$mot = $_POST["motivosti"];
 	$grupo = $_POST["Grupo"];
 	$descr = $_POST["txt_area"];
+	$TiempoFecha = date('Y-m-d', time());
 	//----------------------------------------------------------------------
 	//---------chekeo sobre el genero de la tutoria ó estudiante------------
 	if ($_POST["gridRadios"] === "Hombre") {
@@ -19,7 +20,7 @@
 		$gen = $_POST["gridRadios"];
 	//--------------------------fin de la comprobacion----------------------
 	//Consulta para el registro de la tutoria
-	$sql = "INSERT INTO tutoria_indivudual(Nombre_Tutor, Nombre_Maestro, Nombre_Alumno, Motivo, Grupo, Genero, Descripcion_Motivo) VALUES ('".$nom_tut."', '".$nom_prof."', '".$nom_alum."', '".$mot."', '".$grupo."', '".$gen."', '".$descr."')";
+	$sql = "INSERT INTO tutoria_indivudual(Nombre_Tutor, Nombre_Maestro, Nombre_Alumno, Motivo, Grupo, Genero, Descripcion_Motivo,Fecha) VALUES ('".$nom_tut."', '".$nom_prof."', '".$nom_alum."', '".$mot."', '".$grupo."', '".$gen."', '".$descr."', '".$TiempoFecha."')";
 	//---------------------------Fin del Registro--------------------------
 ?>
 <!DOCTYPE html>
@@ -36,7 +37,7 @@
 			<img src="../imgs/logo-uni.png" width="100px" height="100px">
 		</div>
 		<div class="col">
-			<h1 class="col-label">Universidas Politecica de Tecamac</h1>
+			<h1 class="col-label">Universidad Politecica de Tecamac</h1>
 		</div>
 	</div>
 </div>

@@ -5,6 +5,7 @@
 	$consul2 ="SELECT * FROM alumnos";
 	$result1 = mysqli_query($con, $consul);
 	$result2 = mysqli_query($con, $consul2);
+	$TiempoFecha = date('Y-m-d', time());
 	//------Almacenamiento de los datos sobre la Asesortia -----------------
 	$nom_tuts = $_POST["selnom_tut"];
 	$nom_alum = $_POST["selnom_alum"];
@@ -21,7 +22,7 @@
 		$gene = $_POST["gridRadios"];
 	//--------------------------fin de la comprobacion----------------------
 	//Consulta para el registro de la Asesoria
-	$sql = "INSERT INTO asesorias(Nombre_Tutor, Nombre_Alumno, Motivo_Asesoria, Genero, Grupo, Calificacion, Descripcion_Motivo) VALUES ('".$nom_tuts."', '".$nom_alum."', '".$mot."', '".$gene."', '".$grupo."', ".$Calif.", '".$descr."')";
+	$sql = "INSERT INTO asesorias(Nombre_Tutor, Nombre_Alumno, Motivo_Asesoria, Genero, Grupo, Calificacion, Descripcion_Motivo, Fecha) VALUES ('".$nom_tuts."', '".$nom_alum."', '".$mot."', '".$gene."', '".$grupo."', ".$Calif.", '".$descr."','".$TiempoFecha."')";
 	//---------------------------Fin del Registro--------------------------
 
 ?>
@@ -60,7 +61,7 @@
 			if(mysqli_query($con, $sql)){
 				echo "<h1>REGISTRO CON EXITO!!!</h1>
 			<h4>Desea Realizar otro registro?</h4>";
-#------------------Actualizacion de las asesorias para los tutores-------------
+#----------------Actualizacion de las asesorias para los tutores-------------
 				if($row = mysqli_fetch_array($result1)){
 					do {
 						if ($nom_tuts == $row["Nombre_Tutor"]) {
