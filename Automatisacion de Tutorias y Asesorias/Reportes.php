@@ -1,30 +1,23 @@
-<?php require 'Conexiones.php';
-	$Con = db_connect();
-	$sql1 = "SELECT * FROM desempeno";
-	$result1 = mysqli_query($Con, $sql1);
+<?php 
 	ini_set('date.timezone', 'America/Mexico_City');
 	$TiempoFecha = date('Y-m-d', time());
-?>
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<title></title>
-	<meta charset="UTF-8">
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Graficas/Indicadores/Etc.</title>
 </head>
 <body onload="mueveReloj()">
 <div class="container-fluid" style="background-color: #FFC300;">
-	<div class="row">
-		<div class="col-md-5">
-			<a href="index.php"><img src="imgs/logo-uni.png" width="100px" height="100px" class="media"></a>
-		</div>
-		<div class="col">
-			<br>
-			<h1 class="page-header">Tutores / Asesores</h1>
+		<div class="row">
+			<div class="col-md-4 col-sm-6">
+			<img src="imgs/logo-uni.png" width="100px" height="100px"></div>
+		<div class="col d-flex align-items-center"><h1>Reportes Y Graficas</h1></div>
 		</div>
 	</div>
-</div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="index.php">Inicio</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,8 +30,8 @@
       <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tutorias Individuales</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        	<a class="dropdown-item" href="Tutoria_Ind.php">Registrar Tutoria</a>
-          	<a class="dropdown-item" href="phpregister/MostrarTutInd.php">Mostrar Tutorias</a>
+          <a class="dropdown-item" href="Tutoria_Ind.php">Registrar Tutoria</a>
+            <a class="dropdown-item" href="phpregister/MostrarTutInd.php">Mostrar Tutorias</a>
         </div>
       </li>
       <!--Final de el Menu despegable-->
@@ -55,7 +48,7 @@
       <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Encuestas de Satisfaccion</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        	<a class="dropdown-item" href="Encuestas_Sat.php">Registrar Encuesta</a>
+          <a class="dropdown-item" href="Encuestas_Sat.php">Registrar Encuesta</a>
             <a class="dropdown-item" href="phpregister/MostrarEncuestas.php">Mostrar Encuestas</a>
         </div>
       </li>
@@ -64,13 +57,13 @@
       <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Asesorias</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        	<a class="dropdown-item" href="Asesorias.php">Registrar Asesoria</a>
-          	<a class="dropdown-item" href="phpregister/MostrarAseso.php">Mostrar Asesoriass</a>
+          <a class="dropdown-item" href="Asesorias.php">Registrar Asesoria</a>
+            <a class="dropdown-item" href="phpregister/MostrarAseso.php">Mostrar Asesoriass</a>
         </div>
       </li>
       <!--Final de el Menu despegable-->
-      <li class="nav-item active">
-        <a class="nav-link" href="Reportes.php">Reportes<span class="sr-only"></span></a>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="Reportes.php">Reportes<span class="sr-only"></span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="Registro_Alum.php">Alumnos<span class="sr-only"></span></a>
@@ -78,11 +71,11 @@
       <li class="nav-item active">
         <a class="nav-link" href="Registro_Prof.php">Profesor<span class="sr-only"></span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="Registro_Tut.php">Tutores<span class="sr-only"></span></a>
+      <li class="nav-item active">
+        <a class="nav-link" href="Registro_Tut.php">Tutores<span class="sr-only"></span></a>
       </li>
       <li class="nav-item active">
-      	<a class="nav-link disabled" href=""><?php echo $TiempoFecha;?></a>
+        <a class="nav-link" href=""><?php echo $TiempoFecha;?></a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0" name="form_reloj">
@@ -90,67 +83,42 @@
     </form>
   </div>
 </nav>
-<br><br>
-<div class="container">
-	<div class="row">
-		<div class="col-md-4 offset-md-4">
-			<div class="card card-body">
-				<form class="form" action="phpregister/registro_tut.php" method="post">
-					<div class="form-group">
-						<h6>Registro Tutor</h6>
-						<input class="form-control" type="text" name="nom_tut" placeholder="Nombre del Tutor" autocomplete="off" id="Nom">
-					</div>
-					<br>
-					<div class="form-group">
-						<h6>Grupo Tutorado</h6>
-						<input class="form-control" type="text" name="nom_grup" placeholder="Grupo" autocomplete="off" id="Grupo">
-					</div>
-					<br>
-					<div class="form-group">
-						<h6>Numero de Telefono</h6>
-						<input class="form-control" type="text" name="nom_tel" placeholder="Telefono celular" autocomplete="off" id="num-tel">
-					</div>
-					<br>
-					<div class="form-group">
-						<h6>Correo Electronico</h6>
-						<input class="form-control" type="text" name="nom_corr" placeholder="Correo Electronico" autocomplete="off" id="correo">	
-					</div>
-					<br>
-					<div class="form-group">
-						<h6>Desempeño</h6>
-						<select class="form-control custom-select" name="desem">
-    						<option selected name="desempeño">seleccione una Opcion</option>
-    						<?php
-    							if($row = mysqli_fetch_array($result1)){
-									do {
-										echo "<option value='".$row["desempenos"]."'>".$row["desempenos"]."</option>"; 
-										} while ($row = mysqli_fetch_array($result1));
-								}else{
-								echo "<option>No hay Registros </option>";
-								}
-							?>
-  						</select>
-					</div>
-					<br>
-					<div class="form-group">
-						<h6>Entrega de Reglamento</h6>
-						<select class="form-control custom-select" name="regla">
-							<option selected> Opcion</option>
-							<option value="Si">Si</option>
-							<option value="No">No</option>
-						</select>	
-					</div>
-					<br>
-					<div class="form-group">
-						<input type="submit" value="Registrar" class="btn btn-primary">
-						<input type="reset" value="Limpiar" class="btn btn-primary">
-					</div>			
-				</form>
-			</div>
-		</div><br>
-	</div>
 </div>
 <br>
+<div class="container">
+	<div class="row">
+		<div class="col-md-auto">
+			<div class="card" style="width: 18rem;">
+  				<img src="imgs/Grafica1.png" class="card-img-top" alt="Error en la Busqueda de la Imagen">
+  				<div class="card-body">
+    				<h5 class="card-title">Reporte ISO 9001</h5>
+    				<p class="card-text">Aqui puede generar el reporte ISO, tambien se generara un reporte en PDF o en Excel, Tambien se mostrara como una pre-view del reporte.</p>
+    				<a href="phpregister/reporteISO.php" class="btn btn-primary">Generar Reporte</a>
+  				</div>
+			</div>
+		</div>
+		<div class="col-md-auto">
+			<div class="card" style="width: 18rem;">
+  				<img src="imgs/Grafica2.png" class="card-img-top" alt="Error en la Busqueda de la Imagen">
+  				<div class="card-body">
+    				<h5 class="card-title">Reporte MECASUP</h5>
+    				<p class="card-text">Aqui puede generar el Reporte MECASUP, tambien se generara un reporte en PDF o en Excel, Tambien se mostrara como una pre-view del reporte.</p>
+    				<a href="phpregister/reporteMECASUP.php" class="btn btn-primary">Generar Reporte</a>
+  				</div>
+			</div>
+		</div>
+		<div class="col-md-auto">
+			<div class="card" style="width: 18rem;">
+  				<img src="imgs/Grafica3.jpg" class="card-img-top" alt="Error en la Busqueda de la Imagen">
+  				<div class="card-body">
+    				<h5 class="card-title">Reporte CIESS</h5>
+    				<p class="card-text">Aqui puede generar el Reporte CIES, tambien se generara un reporte en PDF o en Excel, Tambien se mostrara como una pre-view del reporte</p>
+    				<a href="phpregister/reporteCIESS.php" class="btn btn-primary">Generar Reporte</a>
+  				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="container-fluid" style="background-color: gray;">
 	<br><br><br>
 </div>
@@ -173,15 +141,5 @@ function mueveReloj(){
 } 
 </script>
 <!--FIN DEL SCRIPT DEL RELOJ-->
-<script type="text/javascript" src="js/bootstrap-validate.js"></script>
-<script type="text/javascript">
-	bootstrapValidate('#Nom', 'require:Este campo es necesario')
-	bootstrapValidate('#Nom', 'alpha:Solo caracteres')
-	bootstrapValidate('#Grupo', 'min:6:Introdusca minimo 6 caracteres')
-	bootstrapValidate('#Grupo', 'max:7:Introdusca maximo 6 caracteres')
-	bootstrapValidate('#num-tel', 'numeric:Solo Numeros Para el Numero de Telefono')
-	bootstrapValidate('#correo', 'email:Introdusca un Correo Electronico Valido')
-</script>
 </body>
 </html>
-<?php mysqli_close($Con); ?>

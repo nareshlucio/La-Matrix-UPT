@@ -29,6 +29,8 @@
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
 	<title></title>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
 </head>
 <body>
 <div class="container-fluid" style="background-color: #FFC300;">
@@ -41,15 +43,6 @@
 		</div>
 	</div>
 </div>
-<nav class="nav">
-	<a class="nav-link" href="../index.php">Inicio</a>
-	<a class="nav-link" href="../Tutoria_Ind.php">Tutorias Individuales</a>
-	<a class="nav-link" href="../Tutoria_Grup.php">Tutorias Grupales</a>
-	<a class="nav-link" href="../Encuestas_Sat.php">Encuestas de Satisfacion</a>
-	<a class="nav-link" href="../Asesorias.php">Asesorias</a>
-	<a class="nav-link disabled" href="#">Total</a>
-	<a class="nav-link" href="../Registro_Tut.php">Registro Tutores/Profesores/Alumnos</a>
-</nav>
 <br><br>
 <div class="container">
 	<div class="row">
